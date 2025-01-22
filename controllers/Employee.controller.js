@@ -27,6 +27,37 @@ const getEmployeeById=async (req,res)=>{
         res.status(500).json({message:error.message})
     }
 }
+const getEmployeeByDomain=async (req,res)=>{
+    try {
+        const {domain}=req.params;
+        const query = { domain: { $regex: `^${domain}$`, $options: 'i' } };
+
+        const employee=await Employee
+        .find({query})
+        .sort({name:1})
+        if(!employee){
+            return res.status(404).json({message:"Employee not found"})
+        }
+        res.status(200).json(employee);
+    } catch (error) {
+        res.status(500).json({message:error.message})
+    }   
+}
+const getEmployeeByName=async (req,res)=>{
+    try {
+        const {name}=req.params;
+        const query = { name: { $regex: `^${name}$`, $options: 'i' } };
+
+        const employee=await Employee.find({query})
+        if(!employee){
+            return res.status(404).json({message:"Employee not found"})
+        }
+        res.status(200).json(employee);
+    }
+    catch (error) {
+        res.status(500).json({message:error.message})
+    }
+}
 const updateEmployee=async (req,res)=>{
     try {
         const {id}=req.params;
