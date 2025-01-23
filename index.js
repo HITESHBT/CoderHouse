@@ -11,13 +11,13 @@ app.use('/Employee',employeeRoute)
 app.use('/Admin',adminRoute)
 mongoose.connect(process.env.MONGODB_URI).then(()=>{
     console.log("database is connected")
-    app.listen(3000,()=>{
-        console.log('the server has started');
-    });
-}).catch(()=>{
-   console.log("connection failed"); 
+   
+}).catch((err)=>{
+   console.error(err); 
 })
-
+app.listen(3000,()=>{
+    console.log('the server has started');
+});
 
 app.get('/',(req,res)=>{
     res.send("hello from CoderHouse")
