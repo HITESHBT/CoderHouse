@@ -2,6 +2,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const Employee = require('./models/Employee.model');
 require('dotenv').config();
+const serverless = require('serverless-http');
 
 const app = express();
 app.use(express.json());
@@ -26,6 +27,6 @@ app.get('/', (req, res) => {
   res.send('Hello from CoderHouse');
 });
 
-// Export the app wrapped with serverless-http
-const serverless = require('serverless-http');
+// Export the app for serverless deployment
+
 module.exports = serverless(app);
