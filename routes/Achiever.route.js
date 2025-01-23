@@ -1,0 +1,11 @@
+const express=require('express');
+const router=express.Router();
+const {createAchiever,getAchiever,getAchieverById,getAchieverByCompany,getAchieverByName,updateAchiever,deleteAchiever}=require('../controllers/Achiever.controller');
+router.post('/create',createAchiever);
+router.get('/',getAchiever);
+router.get('/:id',getAchieverById);
+router.get('/company/:name',getAchieverByCompany);
+router.get('/:name',getAchieverByName);
+router.put('/:id',updateAchiever);
+router.delete('/:id',deleteAchiever);
+module.exports=router;

@@ -1,0 +1,10 @@
+const express = require('express');
+const router = express.Router();
+const { createHourlyProgram, getHourlyProgram, getHourlyProgramById, getHourlyProgramByName, updateHourlyProgram, deleteHourlyProgram } = require('../controllers/HourlyProgram.controller');
+router.post('/create', createHourlyProgram);
+router.get('/', getHourlyProgram);
+router.get('/:id', getHourlyProgramById);
+router.get('/:name', getHourlyProgramByName);
+router.put('/:id', updateHourlyProgram);
+router.delete('/:id', deleteHourlyProgram);
+module.exports = router;

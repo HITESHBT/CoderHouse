@@ -1,0 +1,10 @@
+const express = require('express');
+const router = express.Router();
+const { createMoment, getMoment, getMomentById, getMomentByType, updateMoment, deleteMoment } = require('../controllers/Moments.controller');    
+router.post('/create', createMoment);
+router.get('/', getMoment);
+router.get('/:id', getMomentById);
+router.get('/:type', getMomentByType);
+router.put('/:id', updateMoment);
+router.delete('/:id', deleteMoment);
+module.exports = router;
