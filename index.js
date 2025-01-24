@@ -2,9 +2,9 @@ const express = require('express');
 const mongoose = require('mongoose');
 const Employee = require('./models/Employee.model');
 require('dotenv').config();
-const serverless = require('serverless-http');
 
 const app = express();
+const PORT=process.env.PORT || 3000;
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
@@ -14,13 +14,12 @@ const adminRoute = require('./routes/Admin.route');
 app.use('/Employee', employeeRoute);
 app.use('/Admin', adminRoute);
 
-let isConnected=false;
-
-
 mongoose
   .connect(process.env.MONGODB_URI)
   .then(() => {
-    isConnected=true;
+    app.listen(PORT,()=>{
+        console.log(`Server is running on port ${PORT}`);
+    })
     console.log('Database is connected');
   })
   .catch((err) => {
@@ -29,13 +28,9 @@ mongoose
 
 
 app.get('/', (req, res) => {
-    if (isConnected) {
-        res.send('Hello from CoderHouse');
-    } else {    
-        res.send('Database not connected');
-    }
+    res.send('hello form coderhouse')
 });
 
-// Export the app for serverless deployment
 
-module.exports = serverless(app);
+
+
