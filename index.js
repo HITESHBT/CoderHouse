@@ -14,7 +14,7 @@ const adminRoute = require('./routes/Admin.route');
 app.use('/Employee', employeeRoute);
 app.use('/Admin', adminRoute);
 
-let isConnected;
+let isConnected=false;
 
 
 mongoose
@@ -28,14 +28,12 @@ mongoose
   });
 
 
-if (isConnected) {
-    console.log('Using existing database connection');
-  } else {
-    mongoose.connect(process.env.MONGODB_URI);
-}
-
 app.get('/', (req, res) => {
-  res.send('Hello from CoderHouse');
+    if (isConnected) {
+        res.send('Hello from CoderHouse');
+    } else {    
+        res.send('Database not connected');
+    }
 });
 
 // Export the app for serverless deployment
