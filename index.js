@@ -16,7 +16,6 @@ app.use('/Admin', adminRoute);
 
 let isConnected;
 
-const mongoose = require('mongoose');
 
 mongoose
   .connect(process.env.MONGODB_URI)
