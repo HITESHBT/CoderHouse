@@ -14,14 +14,25 @@ const adminRoute = require('./routes/Admin.route');
 app.use('/Employee', employeeRoute);
 app.use('/Admin', adminRoute);
 
-mongoose
-  .connect(process.env.MONGODB_URI)
-  .then(() => {
-    console.log('Database is connected');
-  })
-  .catch((err) => {
-    console.error(err);
-  });
+let isConnected;
+
+mongoose.connect(process.env.MONGODB_URI, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+    keepAlive: true,
+    connectTimeoutMS: 10000,
+})
+.then(() => {
+  isConnected = true;
+  console.log('Database is connected');
+})
+.catch((err) => console.error(err));
+
+if (isConnected) {
+    console.log('Using existing database connection');
+  } else {
+    mongoose.connect(process.env.MONGODB_URI);
+}
 
 app.get('/', (req, res) => {
   res.send('Hello from CoderHouse');
