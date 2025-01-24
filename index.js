@@ -16,15 +16,18 @@ app.use('/Admin', adminRoute);
 
 let isConnected;
 
-mongoose.connect(process.env.MONGODB_URI, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-})
-.then(() => {
-  isConnected = true;
-  console.log('Database is connected');
-})
-.catch((err) => console.error(err));
+const mongoose = require('mongoose');
+
+mongoose
+  .connect(process.env.MONGODB_URI)
+  .then(() => {
+    isConnected=true;
+    console.log('Database is connected');
+  })
+  .catch((err) => {
+    console.error('Database connection error:', err);
+  });
+
 
 if (isConnected) {
     console.log('Using existing database connection');
