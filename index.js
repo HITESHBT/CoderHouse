@@ -19,8 +19,6 @@ let isConnected;
 mongoose.connect(process.env.MONGODB_URI, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
-    keepAlive: true,
-    connectTimeoutMS: 10000,
 })
 .then(() => {
   isConnected = true;
