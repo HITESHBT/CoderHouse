@@ -90,5 +90,7 @@ module.exports={
     getEmployee,
     getEmployeeById,
     updateEmployee,
-    deleteEmployee
+    deleteEmployee,
+    getEmployeeByDomain,
+    getEmployeeByName
 }

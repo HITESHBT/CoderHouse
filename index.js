@@ -10,9 +10,29 @@ app.use(express.urlencoded({ extended: false }));
 
 const employeeRoute = require('./routes/Employee.route');
 const adminRoute = require('./routes/Admin.route');
+const acheiverRoute = require('./routes/Acheiver.route');
+const ambassdorRoute = require('./routes/Ambassador.route');
+const companyRoute = require('./routes/Company.route');
+const galleryRoute = require('./routes/Gallery.route');
+const hourlyProgramRoute = require('./routes/HourlyProgram.route');
+const mentorRoute = require('./routes/Mentor.route');
+const momentsRoute = require('./routes/Moments.route');
+const reviewRoute = require('./routes/Review.route');
+const roadMapRoute = require('./routes/RoadMap.route');
 
 app.use('/Employee', employeeRoute);
 app.use('/Admin', adminRoute);
+app.use('/Acheiver', acheiverRoute);
+app.use('/Ambassador', ambassdorRoute);
+app.use('/Company', companyRoute);
+app.use('/Gallery', galleryRoute);
+app.use('/HourlyProgram', hourlyProgramRoute);
+app.use('/Mentor', mentorRoute);
+app.use('/Moments', momentsRoute);
+app.use('/Review', reviewRoute);
+app.use('/RoadMap', roadMapRoute);
+
+
 
 mongoose
   .connect(process.env.MONGODB_URI)
