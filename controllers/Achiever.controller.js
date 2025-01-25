@@ -30,7 +30,7 @@ const getAchieverById=async(req,res)=>{
 const getAchieverByCompany=async(req,res)=>{
     try {
         const {name}=req.params;
-        const query = { company_name: { $regex: `^${name}$`, $options: 'i' } };
+        const query = { company_name: name};
 
         const achiever=await Achiever.find({query})
         if(!achiever){

@@ -1,0 +1,10 @@
+const express=require('express');
+const router=express.Router();
+const {createForm,getForms,getForm,updateForm,deleteForm}=require('../controllers/Form.controller');
+const { verifyToekn } = require('../controllers/Admin.controller');
+router.post('/create',createForm);
+router.get('/',verifyToekn,getForms);
+router.get('/:id',verifyToekn,getForm);
+router.put('/:id',verifyToekn,updateForm);
+router.delete('/:id',verifyToekn,deleteForm);
+module.exports=router;
