@@ -22,6 +22,7 @@ const momentsRoute = require('./routes/Moments.route');
 const reviewRoute = require('./routes/Review.route');
 const roadMapRoute = require('./routes/RoadMap.route');
 const formRoute = require('./routes/Form.route');
+const homeBanner=require('./routes/HomeBanner.route')
 
 app.use('/Employee', employeeRoute);
 app.use('/Admin', adminRoute);
@@ -35,6 +36,7 @@ app.use('/Moments', momentsRoute);
 app.use('/Review', reviewRoute);
 app.use('/RoadMap', roadMapRoute);
 app.use('/Form', formRoute);
+app.use('/HomeBanner',homeBanner)
 
 
 
