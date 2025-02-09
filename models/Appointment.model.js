@@ -1,0 +1,42 @@
+const mongoose = require('mongoose')
+const appointmentSchema = mongoose.Schema({
+    name:{
+        type:String,
+        required:true
+    },
+    email:{
+        type:String,
+        required:true
+    },
+    phone:{
+        type:Number,
+        required:true
+    },
+    branch_course:{
+        type:String,
+        required:true
+    },
+    study_year:{
+        type:String,
+        required:true
+    },
+    mentor_domain:
+    {
+        type:String,
+        required:true
+    },
+    appointment_date:{
+        type:Date,
+        required:true
+    },
+    appointment_time:{
+        type:String,
+        required:true
+    },
+    query:{
+        type:String,
+        required:true
+    }
+})
+const Appointment=mongoose.model("Appointment", appointmentSchema)
+module.exports=Appointment
