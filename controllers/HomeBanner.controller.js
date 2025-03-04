@@ -2,6 +2,7 @@ const HomeBanner=require('../models/HomeBanner.model')
 
 const createHomeBanner=async(req,res)=>{
     try {
+        console.log(req.body)
         const homeBanner=await HomeBanner.create(req.body);
         res.status(201).json({HomeBanner: homeBanner})
     } catch (error) {

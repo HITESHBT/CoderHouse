@@ -24,6 +24,7 @@ const roadMapRoute = require('./routes/RoadMap.route');
 const formRoute = require('./routes/Form.route');
 const homeBanner=require('./routes/HomeBanner.route')
 const appointment=require('./routes/Appointment.route')
+const campusProgramDescription=require('./routes/CampusProgramDescription.route')
 
 app.use('/Employee', employeeRoute);
 app.use('/Admin', adminRoute);
@@ -39,9 +40,11 @@ app.use('/RoadMap', roadMapRoute);
 app.use('/Form', formRoute);
 app.use('/HomeBanner',homeBanner)
 app.use('/Appointment',appointment)
+app.use('/campusProgramDescription',campusProgramDescription)
+// const HomeBanner = require('./models/HomeBanner.model.js');
+// console.log("home banner ka hai ye:   ",HomeBanner.schema.paths);
 
-
-
+// mongoose.set('debug', true);
 mongoose
   .connect(process.env.MONGODB_URI)
   .then(() => {
